@@ -130,10 +130,13 @@ export class StarterClient {
    * ```
    */
   async getHistories(
-    userId: string,
+    entitySlug: string,
     token: FirebaseIdToken
   ): Promise<BaseResponse<History[]>> {
-    const url = buildUrl(this.baseUrl, `/api/v1/users/${userId}/histories`);
+    const url = buildUrl(
+      this.baseUrl,
+      `/api/v1/entities/${entitySlug}/histories`
+    );
     const response = await this.networkClient.get(url, {
       headers: createAuthHeaders(token),
     });
@@ -158,11 +161,14 @@ export class StarterClient {
    * ```
    */
   async createHistory(
-    userId: string,
+    entitySlug: string,
     data: HistoryCreateRequest,
     token: FirebaseIdToken
   ): Promise<BaseResponse<History>> {
-    const url = buildUrl(this.baseUrl, `/api/v1/users/${userId}/histories`);
+    const url = buildUrl(
+      this.baseUrl,
+      `/api/v1/entities/${entitySlug}/histories`
+    );
     const response = await this.networkClient.post(url, data, {
       headers: createAuthHeaders(token),
     });
@@ -187,14 +193,14 @@ export class StarterClient {
    * ```
    */
   async updateHistory(
-    userId: string,
+    entitySlug: string,
     historyId: string,
     data: HistoryUpdateRequest,
     token: FirebaseIdToken
   ): Promise<BaseResponse<History>> {
     const url = buildUrl(
       this.baseUrl,
-      `/api/v1/users/${userId}/histories/${historyId}`
+      `/api/v1/entities/${entitySlug}/histories/${historyId}`
     );
     const response = await this.networkClient.put(url, data, {
       headers: createAuthHeaders(token),
@@ -220,13 +226,13 @@ export class StarterClient {
    * ```
    */
   async deleteHistory(
-    userId: string,
+    entitySlug: string,
     historyId: string,
     token: FirebaseIdToken
   ): Promise<BaseResponse<void>> {
     const url = buildUrl(
       this.baseUrl,
-      `/api/v1/users/${userId}/histories/${historyId}`
+      `/api/v1/entities/${entitySlug}/histories/${historyId}`
     );
     const response = await this.networkClient.delete(url, {
       headers: createAuthHeaders(token),

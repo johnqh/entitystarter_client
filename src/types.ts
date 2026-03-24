@@ -42,8 +42,9 @@ export const DEFAULT_GC_TIME = 30 * 60 * 1000;
  * ```
  */
 export const QUERY_KEYS = {
-  /** Cache key for a user's history list. */
-  histories: (userId: string) => ['starter', 'histories', userId] as const,
+  /** Cache key for an entity's history list. */
+  histories: (entitySlug: string) =>
+    ['starter', 'histories', entitySlug] as const,
   /** Cache key for the global histories total (public endpoint). */
   historiesTotal: () => ['starter', 'histories', 'total'] as const,
   /** Cache key for a user profile. */

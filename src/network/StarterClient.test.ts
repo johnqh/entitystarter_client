@@ -77,7 +77,7 @@ describe('StarterClient', () => {
     it('should call GET with correct URL', async () => {
       await client.getHistories('user-123', 'token-abc');
       expect(mockNetworkClient.get).toHaveBeenCalledWith(
-        'https://api.example.com/api/v1/users/user-123/histories',
+        'https://api.example.com/api/v1/entities/user-123/histories',
         expect.objectContaining({
           headers: expect.objectContaining({
             Authorization: 'Bearer token-abc',
@@ -92,7 +92,7 @@ describe('StarterClient', () => {
       const data = { datetime: '2024-01-01T00:00:00Z', value: 100 };
       await client.createHistory('user-123', data, 'token-abc');
       expect(mockNetworkClient.post).toHaveBeenCalledWith(
-        'https://api.example.com/api/v1/users/user-123/histories',
+        'https://api.example.com/api/v1/entities/user-123/histories',
         data,
         expect.objectContaining({
           headers: expect.objectContaining({
@@ -108,7 +108,7 @@ describe('StarterClient', () => {
       const data = { value: 200 };
       await client.updateHistory('user-123', 'hist-456', data, 'token-abc');
       expect(mockNetworkClient.put).toHaveBeenCalledWith(
-        'https://api.example.com/api/v1/users/user-123/histories/hist-456',
+        'https://api.example.com/api/v1/entities/user-123/histories/hist-456',
         data,
         expect.objectContaining({
           headers: expect.objectContaining({
@@ -123,7 +123,7 @@ describe('StarterClient', () => {
     it('should call DELETE with correct URL', async () => {
       await client.deleteHistory('user-123', 'hist-456', 'token-abc');
       expect(mockNetworkClient.delete).toHaveBeenCalledWith(
-        'https://api.example.com/api/v1/users/user-123/histories/hist-456',
+        'https://api.example.com/api/v1/entities/user-123/histories/hist-456',
         expect.objectContaining({
           headers: expect.objectContaining({
             Authorization: 'Bearer token-abc',
