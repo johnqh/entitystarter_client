@@ -24,7 +24,7 @@ export interface UseHistoriesReturn {
     historyId: string,
     data: HistoryUpdateRequest
   ) => Promise<BaseResponse<History>>;
-  deleteHistory: (historyId: string) => Promise<BaseResponse<void>>;
+  deleteHistory: (historyId: string) => Promise<BaseResponse<null>>;
   isCreating: boolean;
   isUpdating: boolean;
   isDeleting: boolean;
